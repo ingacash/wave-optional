@@ -1,0 +1,5 @@
+{
+    version = 4,
+    roots = [{edges = [], features = {}, manifest = "vex.ws", name = "optional", version = "0.1.0"}],
+    package = []
+}

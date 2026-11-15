@@ -1,0 +1,43 @@
+import("std::process::core")::{
+    proc_exit
+};
+
+pub variant Optional<T> {
+    Value(T),
+    None
+}
+
+pub fun has_value<T>(opt: Optional<T>) -> bool {
+    match (opt) {
+        Optional::Value(_) => {
+            return true;
+        }
+        Optional::None => {
+            return false;
+        }
+    }
+}
+
+pub fun get_value<T>(opt: Optional<T>) -> T {
+    match (opt) {
+        Optional::Value(value) => {
+            return value;
+        }
+        Optional::None => {
+            println("ABORT: get_value() called on Optional::None");
+            proc_exit(0);
+        }
+    }
+}
+
+pub fun get_value_or<T>(opt: Optional<T>, default: T) -> T {
+    match (opt) {
+        Optional::Value(value) => {
+            return value;
+        }
+        Optional::None => {
+            return default;
+        }
+    }
+}
+
